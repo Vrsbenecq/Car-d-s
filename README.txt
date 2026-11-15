@@ -1,0 +1,1 @@
+Upload the contents of this folder to an HTTPS static host (e.g. GitHub Pages). Open the published URL in Safari, tap Share, then Add to Home Screen. The game shell works offline after a successful first load; Wikimedia photos require internet. Export saves regularly. No native app or server is included.
