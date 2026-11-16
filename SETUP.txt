@@ -1,0 +1,8 @@
+Car SuperCard 8.1 — private multiplayer prototype
+1. Create a project at https://console.firebase.google.com/ (Analytics optional).
+2. Authentication > Sign-in method > Anonymous > Enable. Add vrsbenecq.github.io under Authentication > Settings > Authorized domains if needed.
+3. Realtime Database > Create Database > choose location > locked mode. In Rules paste database.rules.json and Publish. Use a dedicated database, not one holding other data.
+4. Project settings > General > Your apps > Web (</>) > register app. Copy firebaseConfig into firebase-config.js as window.CAR_FIREBASE = { ... }; include databaseURL from Realtime Database if missing.
+5. Upload index.html, sw.js and firebase-config.js to GitHub Pages root. Do not upload setup or rules unless desired. Never include service account credentials.
+6. Open game on two separate devices, Online > Create Room, other device enters code > Join Room. Both Ready, choose one car per round. Best of three, ties possible. New room for rematch. No ranked or currency rewards. Online stats stored locally.
+Limitations: local saves are editable; this is not cheat-proof. Anyone authenticated who guesses a room code can read its data; share codes privately. Rooms are retained until manually deleted in Firebase console. No automatic reconnect for host, timeout or forfeits. A lost connection may require a new room. Firebase integration and rules have not been tested against a live project.
