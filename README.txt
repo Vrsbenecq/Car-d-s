@@ -1,1 +1,2 @@
-Version 9.2: replace index.html and sw.js. No Firebase changes. Catalog identity remains 91. Album numbers are display-only and now sequential by rarity. Export a backup before updating.
+Car SuperCard 9.3
+Replace index.html and sw.js. Manufacturer mastery is local save progress. Battle bonuses apply to owned cards; Real stock specs and private online ratings remain unchanged.
