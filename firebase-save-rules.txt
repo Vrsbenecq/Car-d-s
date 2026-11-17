@@ -1,0 +1,14 @@
+Merge this child into the existing Realtime Database rules under "rules". Do NOT replace the rooms91 rules. Root-level read/write must not grant broad access (Firebase grants cascade). The save path is private to each authenticated UID.
+
+"playerSaves100": {
+  "$uid": {
+    ".read": "auth != null && auth.uid === $uid",
+    ".write": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous' && newData.exists()",
+    ".validate": "newData.hasChildren(['rev','payload','time']) && newData.child('rev').isNumber() && newData.child('rev').val() === (data.exists() ? data.child('rev').val() + 1 : 1) && newData.child('payload').isString() && newData.child('payload').val().length <= 4000000 && newData.child('time').isNumber()",
+    "backups": {
+      "$day": {
+        ".validate": "newData.hasChildren(['payload','time']) && newData.child('payload').isString() && newData.child('payload').val().length <= 4000000 && newData.child('time').isNumber()"
+      }
+    }
+  }
+}
