@@ -47,6 +47,63 @@
           }
         }
       }
+    },
+    "publicProfiles103": {
+      ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && query.limitToLast != null && query.limitToLast <= 50 && (query.orderByChild === 'xp' || query.orderByChild === 'lp' || query.orderByChild === 'cars' || query.orderByChild === 'wins' || query.orderByChild === 'online')",
+      ".indexOn": [
+        "xp",
+        "lp",
+        "cars",
+        "wins",
+        "online"
+      ],
+      "$uid": {
+        ".read": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid",
+        ".write": "auth != null && auth.token.firebase.sign_in_provider !== 'anonymous' && auth.uid === $uid",
+        ".validate": "newData.hasChildren([\"name\", \"brand\", \"avatar\", \"level\", \"xp\", \"lp\", \"cars\", \"wins\", \"losses\", \"online\", \"onlineLosses\", \"draws\", \"updated\"])",
+        "name": {
+          ".validate": "newData.isString() && newData.val().matches(/^[a-zA-Z0-9 _-]{3,24}$/)"
+        },
+        "brand": {
+          ".validate": "newData.isString() && newData.val().length <= 40"
+        },
+        "avatar": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 11"
+        },
+        "level": {
+          ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 999"
+        },
+        "xp": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+        },
+        "lp": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+        },
+        "cars": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1500"
+        },
+        "wins": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+        },
+        "losses": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+        },
+        "online": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+        },
+        "onlineLosses": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+        },
+        "draws": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+        },
+        "updated": {
+          ".validate": "newData.isNumber() && newData.val() <= now && newData.val() >= now - 60000"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
 }
