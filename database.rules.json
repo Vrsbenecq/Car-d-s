@@ -36,36 +36,14 @@
         }
       }
     },
-    "rooms91": {
-      "$code": {
-        ".read": "auth != null && $code.matches(/^[A-F0-9]{6}$/)",
-        ".write": "auth != null && !data.exists() && newData.child('host/uid').val() === auth.uid && !newData.child('guest').exists()",
-        ".validate": "newData.hasChildren(['mode','created','categories','host']) && (newData.child('mode').val() === 'battle' || newData.child('mode').val() === 'real')",
-        "host": {
-          "ready": {
-            ".write": "auth != null && data.parent().child('uid').val() === auth.uid && data.val() === false && newData.val() === true"
-          },
-          "moves": {
-            "$round": {
-              ".write": "auth != null && data.parent().parent().child('uid').val() === auth.uid && !data.exists() && newData.hasChildren(['hash']) && !newData.child('reveal').exists()",
-              "reveal": {
-                ".write": "auth != null && data.parent().parent().parent().child('uid').val() === auth.uid && !data.exists() && data.parent().child('hash').exists() && root.child('rooms91').child($code).child('guest/moves').child($round).child('hash').exists()"
-              }
-            }
-          }
-        },
-        "guest": {
-          ".write": "auth != null && !data.exists() && newData.child('uid').val() === auth.uid && root.child('rooms91').child($code).child('host/uid').val() !== auth.uid && newData.child('ready').val() === false && !newData.child('moves').exists()",
-          "ready": {
-            ".write": "auth != null && data.parent().child('uid').val() === auth.uid && data.val() === false && newData.val() === true"
-          },
-          "moves": {
-            "$round": {
-              ".write": "auth != null && data.parent().parent().child('uid').val() === auth.uid && !data.exists() && newData.hasChildren(['hash']) && !newData.child('reveal').exists()",
-              "reveal": {
-                ".write": "auth != null && data.parent().parent().parent().child('uid').val() === auth.uid && !data.exists() && data.parent().child('hash').exists() && root.child('rooms91').child($code).child('host/moves').child($round).child('hash').exists()"
-              }
-            }
+    "playerSaves100": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid && auth.token.firebase.sign_in_provider !== 'anonymous' && newData.exists()",
+        ".validate": "newData.hasChildren(['rev','payload','time']) && newData.child('rev').isNumber() && newData.child('rev').val() === (data.exists() ? data.child('rev').val() + 1 : 1) && newData.child('payload').isString() && newData.child('payload').val().length <= 4000000 && newData.child('time').isNumber()",
+        "backups": {
+          "$day": {
+            ".validate": "newData.hasChildren(['payload','time']) && newData.child('payload').isString() && newData.child('payload').val().length <= 4000000 && newData.child('time').isNumber()"
           }
         }
       }
