@@ -1,8 +1,6 @@
-Car SuperCard 13.6 — Modular Foundation (Phase 1)
+Car SuperCard 13.6.1 — Match Results Hotfix
 
-Based on uploaded 13.5 stable baseline.
-Changes: extracted 28 inline CSS blocks to css/game.css in their original order; Settings version label corrected to v13.6; cache namespace updated. All inline gameplay JavaScript remains untouched.
-
-Upload index.html, sw.js, and css/game.css (preserve folder structure). Existing assets must remain.
-
-No live iPhone or Firebase testing performed. Back up save before deploying.
+Fix: match-results CONTINUE now targets the footer button rather than the first button inside the dialog (which may be a photo/license button).
+No economy, rewards, saves or Firebase changes.
+Upload index.html and sw.js, keeping css/game.css at css/game.css.
+Test a win and loss; static syntax checks do not replace live iPhone testing.
