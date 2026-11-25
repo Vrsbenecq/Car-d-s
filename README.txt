@@ -1,2 +1,2 @@
-Car SuperCard 14.0 — Market Foundation
-Based on v13.8. Upload index.html and sw.js to root; css/market.css and js/auction-house.js are NEW. Full package also includes unchanged game.css and collection modules for clean installation. No Firebase changes. Quick Sell uses existing local/cloud save pipeline. Auction listings are explicitly previews; live bidding, AI buyers and transfers are disabled until 14.1. Test on the test repo first. Export a save backup before updating. Syntax and isolated Quick Sell logic tested; browser and live cloud sync not tested.
+Car SuperCard 14.0.1 Market Polish
+Replace index.html, sw.js, css/market.css, js/auction-house.js. Other files unchanged. No Firebase changes. Market remains a preview; Quick Sell unchanged. Watchlist and view preference are local to this browser. Photo attribution remains available on thumbnails and inspection. Back up save before deploying. Browser/device testing required.
